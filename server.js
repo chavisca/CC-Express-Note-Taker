@@ -16,17 +16,17 @@ app.use('/api', api);
 
 // GET route for the index page
 app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/pages/index.html'))
+  res.sendFile(path.join(__dirname, './public/pages/index.html'))
 );
 
 // GET route for the notes HTML page
 app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/pages/notes.html'))
+  res.sendFile(path.join(__dirname, './public/pages/notes.html'))
 );
 
 // Wildcard route to index
 app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/pages/index.html'))
+  res.sendFile(path.join(__dirname, './public/pages/index.html'))
 );
 
   app.listen(PORT, () =>

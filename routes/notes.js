@@ -1,5 +1,5 @@
 const notes = require('express').Router();
-const { v4: uuidv4 } = require('../helpers/uuid');
+const { v4: uuidv4 } = require('./helpers/uuid');
 const {
   readFromFile,
   readAndAppend,
@@ -8,7 +8,7 @@ const {
 
 // GET Route for retrieving all the notes
 notes.get('/', (req, res) => {
-  readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
+  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 // GET Route for a specific tip
@@ -27,7 +27,7 @@ notes.get('/:noteUID', (req, res) => {
 // DELETE Route for a specific tip
 tips.delete('/:noteUID', (req, res) => {
   const noteUID = req.params.noteUID;
-  readFromFile('../db/db.json')
+  readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all tips except the one with the ID provided in the URL
@@ -54,7 +54,7 @@ notes.post('/', (req, res) => {
       noteUID: uuidv4(),
     };
 
-    readAndAppend(newTip, '../db/db.json');
+    readAndAppend(newTip, './db/db.json');
     res.json(`Note added successfully`);
   } else {
     res.error('Error in adding note');
