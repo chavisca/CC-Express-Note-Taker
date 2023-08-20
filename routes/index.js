@@ -1,8 +1,8 @@
 const express = require('express');
 
 // Import our modular routers for /tips and /feedback
-const notesRouter = require('./pages/notes');
-const indexRouter = require('./pages/index');
+const notesRouter = require('../public/pages/notes');
+const indexRouter = require('../public/pages/index');
 
 const app = express();
 
