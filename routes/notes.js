@@ -48,7 +48,7 @@ notes.post('/', (req, res) => {
   const { title, text, noteUID } = req.body;
 
   if (req.body) {
-    const newTip = {
+    const newNote = {
       title,
       text,
       noteUID: uuidv4(),
