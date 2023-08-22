@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const { clog } = require('./helpers/clog.js');
 const api = require('./routes/index.js');
-const notesRouter = require('./routes/notes.js');
+// const notesRouter = require('./routes/notes.js');
 
 const PORT = process.env.PORT || 3001;
 
@@ -13,7 +13,7 @@ app.use(clog);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use('/notes', notesRouter);
+// app.use('/notes', notesRouter);
 app.use('/api', api);
 
 // GET route for the index page
