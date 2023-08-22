@@ -11,8 +11,8 @@ notes.get('/', (req, res) => {
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-// GET Route for a specific tip
-notes.get('/:noteUID', (req, res) => {
+// GET Route for a specific note
+notes.get('/:id', (req, res) => {
   const noteUID = req.params.noteUID;
   readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
@@ -24,20 +24,20 @@ notes.get('/:noteUID', (req, res) => {
     });
 });
 
-// DELETE Route for a specific tip
-notes.delete('/:noteUID', (req, res) => {
+// DELETE Route for a specific note
+notes.delete('/:id', (req, res) => {
   const noteUID = req.params.noteUID;
   readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
-      // Make a new array of all tips except the one with the ID provided in the URL
-      const result = json.filter((note) => note.noteUID !== noteUID);
+      // Make a new array of all notes except the one with the ID provided in the URL
+      const result = json.filter((note) => note.id !== id);
 
       // Save that array to the filesystem
       writeToFile('./db/db.json', result);
 
       // Respond to the DELETE request
-      res.json(`Item ${noteUID} has been deleted 🗑️`);
+      res.json(`Item ${id} has been deleted 🗑️`);
     });
 });
 
@@ -45,13 +45,13 @@ notes.delete('/:noteUID', (req, res) => {
 notes.post('/', (req, res) => {
   console.log(req.body);
 
-  const { title, text } = req.body;
+  const { title, text, id } = req.body;
 
-  if (title && text) {
+  if (title && text && id) {
     const newNote = {
       title,
       text,
-      noteUID: uuidv4(),
+      id,
     };
 
     readAndAppend(newNote, './db/db.json');
