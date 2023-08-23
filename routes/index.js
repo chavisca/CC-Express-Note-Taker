@@ -6,7 +6,7 @@ const notesRouter = require('./notes');
 const app = express();
 
 app.get('/notes', (req, res) => {
-    readFromFile('../db/db.json')
+    readFromFile('../../db/db.json')
     .then((data) => res.json(JSON.parse(data)))
     .catch((error) => res.status(500).json({ error: 'Internal server error'}));
 });
