@@ -4,6 +4,7 @@ const {
   readAndAppend,
   writeToFile,
 } = require('../helpers/fsUtils');
+const uuid = require('../helpers/uuid');
 
 // GET Route for retrieving all the notes
 notes.get('/', (req, res) => {
@@ -50,6 +51,7 @@ notes.post('/', (req, res) => {
     const newNote = {
       title,
       text,
+      id: uuid(),
     };
 
     readAndAppend(newNote, './db/db.json');
