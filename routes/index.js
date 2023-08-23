@@ -12,7 +12,6 @@ router.get('/notes', (req, res) => {
     .catch((error) => res.status(500).json({ error: 'Internal server error'}));
 });
 
-app.use('/notes', notesRouter);
+router.use('/notes', notesRouter);
 
-module.exports = app;
 module.exports = router;
