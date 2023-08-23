@@ -7,13 +7,13 @@ const {
 
 // GET Route for retrieving all the notes
 notes.get('/', (req, res) => {
-  readFromFile('../../db/db.json').then((data) => res.json(JSON.parse(data)));
+  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 // GET Route for a specific note
 notes.get('/:id', (req, res) => {
   const noteUID = req.params.noteUID;
-  readFromFile('../../db/db.json')
+  readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       const result = json.filter((note) => note.noteUID === noteUID);
@@ -26,14 +26,14 @@ notes.get('/:id', (req, res) => {
 // DELETE Route for a specific note
 notes.delete('/:id', (req, res) => {
   const noteUID = req.params.noteUID;
-  readFromFile('../../db/db.json')
+  readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all notes except the one with the ID provided in the URL
       const result = json.filter((note) => note.id !== id);
 
       // Save that array to the filesystem
-      writeToFile('../db/db.json', result);
+      writeToFile('./db/db.json', result);
 
       // Respond to the DELETE request
       res.json(`Item ${id} has been deleted 🗑️`);
@@ -53,7 +53,7 @@ notes.post('/', (req, res) => {
       id,
     };
 
-    readAndAppend(newNote, '../../db/db.json');
+    readAndAppend(newNote, './db/db.json');
     res.json(`Note added successfully`);
   } else {
     res.status(400).json({ error: 'Error in adding note' });
