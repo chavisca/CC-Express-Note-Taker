@@ -4,6 +4,8 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
+const uuid = require('../../helpers/uuid');
+
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
@@ -70,7 +72,7 @@ const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
-    id: uuidv4(),
+    id: uuid(),
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
