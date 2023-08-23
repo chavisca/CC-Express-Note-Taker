@@ -70,9 +70,9 @@ const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
+    id: response.id,
   };
   saveNote(newNote).then(() => {
-    const generatedId = response.id;
     getAndRenderNotes();
     renderActiveNote();
   });
