@@ -75,12 +75,16 @@ const handleNoteSave = () => {
     .then(response=> response.json())
     .then(data => {
       const generatedId = data.id;
+      return getNotes()
+    .then(response => response.json())
+    .then(notesData => {
     getAndRenderNotes();
     renderActiveNote();
   })
   .catch(error => {
     console.error('Error saving note:', error);
   });
+})
 };
 
 // Delete the clicked note
