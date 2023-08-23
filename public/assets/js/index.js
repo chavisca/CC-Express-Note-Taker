@@ -70,11 +70,16 @@ const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
-    id: response.id,
   };
-  saveNote(newNote).then(() => {
+  saveNote(newNote)
+    .then(response=> response.json())
+    .then(data => {
+      const generatedId = data.id;
     getAndRenderNotes();
     renderActiveNote();
+  })
+  .catch(error => {
+    console.error('Error saving note:', error);
   });
 };
 
