@@ -14,12 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/api', api);
 
-// GET route to define correct MIME type
-app.get('/routes/index.js', (req, res) => {
-  res.type('application/javascript');
-  res.sendFile(path.resolve(__dirname, '/routes/index.js'));
-});
-
 // GET route for the index page
 app.get('/', (req, res) => 
   res.sendFile(path.join(__dirname, '/public/pages/index.html'))

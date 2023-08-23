@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from '../../helpers/uuid';
-
 let noteTitle;
 let noteText;
 let saveNoteBtn;
