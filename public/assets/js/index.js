@@ -3,7 +3,7 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('../helpers/uuid.js');
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
