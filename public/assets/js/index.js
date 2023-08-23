@@ -3,6 +3,7 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+const { v4: uuidv4 } = require('uuid');
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -70,7 +71,7 @@ const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
-    id: uuid(),
+    id: uuidv4(),
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
