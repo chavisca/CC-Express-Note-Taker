@@ -55,7 +55,7 @@ notes.post('/', (req, res) => {
     };
 
     readAndAppend(newNote, './db/db.json');
-    res.json(`Note added successfully`);
+    res.json({ message: `Note added successfully`, id:newNote.id });
   } else {
     res.status(400).json({ error: 'Error in adding note' });
   }

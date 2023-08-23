@@ -72,9 +72,9 @@ const handleNoteSave = () => {
     text: noteText.value,
   };
   saveNote(newNote).then(() => {
+    const generatedId = response.id;
     getAndRenderNotes();
     renderActiveNote();
-    console.log('Button Clicked');
   });
 };
 
