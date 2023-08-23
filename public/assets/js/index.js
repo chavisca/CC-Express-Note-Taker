@@ -1,9 +1,10 @@
+import { v4 as uuidv4 } from '../../helpers/uuid';
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
-const { v4: uuidv4 } = require('../../helpers/uuid');
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
