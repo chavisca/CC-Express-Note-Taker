@@ -44,13 +44,12 @@ notes.delete('/:id', (req, res) => {
 notes.post('/', (req, res) => {
   console.log(req.body);
 
-  const { title, text, id } = req.body;
+  const { title, text } = req.body;
 
-  if (title && text && id) {
+  if (title && text ) {
     const newNote = {
       title,
       text,
-      id,
     };
 
     readAndAppend(newNote, './db/db.json');
