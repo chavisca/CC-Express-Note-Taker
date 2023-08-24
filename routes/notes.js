@@ -37,7 +37,7 @@ notes.delete('/:id', (req, res) => {
       writeToFile('./db/db.json', result);
 
       // Respond to the DELETE request
-      res.json(`Item ${id} has been deleted 🗑️`);
+      res.json(`Item ${noteUID} has been deleted 🗑️`);
     })
     .catch((error) => {
       console.error('Error deleting note:', error);
