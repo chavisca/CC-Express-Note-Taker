@@ -5,6 +5,7 @@ const notesRouter = require('./notes');
 
 const app = express();
 
+// Notes API GET route
 app.get('/notes', (req, res) => {
     readFromFile('./db/db.json')
     .then((data) => res.json(JSON.parse(data)))
