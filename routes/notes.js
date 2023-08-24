@@ -26,18 +26,22 @@ notes.get('/:id', (req, res) => {
 
 // DELETE Route for a specific note
 notes.delete('/:id', (req, res) => {
-  const noteUID = req.params.noteUID;
+  const noteUID = req.params.id;
   readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all notes except the one with the ID provided in the URL
-      const result = json.filter((note) => note.id !== id);
+      const result = json.filter((note) => note.id !== noteUID);
 
       // Save that array to the filesystem
       writeToFile('./db/db.json', result);
 
       // Respond to the DELETE request
       res.json(`Item ${id} has been deleted 🗑️`);
+    })
+    .catch((error) => {
+      console.error('Error deleting note:', error);
+      res.status(500).json({error: 'Internal server error' });
     });
 });
 
